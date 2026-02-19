@@ -5,6 +5,12 @@ import { config } from './config.js';
 export const sequelize = new Sequelize(config.postgresUri, {
   dialect: 'postgres',
   logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 export const connectDB = async () => {
