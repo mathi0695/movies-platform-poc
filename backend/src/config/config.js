@@ -4,7 +4,7 @@ dotenv.config();
 
 export const config = {
   port: process.env.PORT || 5000,
-  postgresUri: process.env.POSTGRES_URI || 'postgres://postgres:new_password@localhost:5432/movies',
+  postgresUri: 'postgres://postgres:GLgfst629%25%5E@landscor.chuai446a4du.ap-south-1.rds.amazonaws.com:5432/batch05',
   mongoUri: process.env.MONGODB_URI || 'mongodb://localhost:27017/movie-ticket-platform',
   jwtSecret: process.env.JWT_SECRET || 'your-secret-key-change-in-production',
   jwtExpire: process.env.JWT_EXPIRE || '7d',
