@@ -8,3 +8,14 @@ jobs:
     steps:
       - name: Step1
         run: echo 'Hello World'
+
+      - name: Deploy to Ec2 via SSH
+      - uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ec2-3-111-58-191.ap-south-1.compute.amazonaws.com
+          username: ubuntu
+          key: ${{secrets.EC2_KEY}}
+          script: cd /home/ubuntu/movies-platform-poc | git pull | docker compose up -d --build
+
+
+
