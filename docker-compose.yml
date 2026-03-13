@@ -1,0 +1,49 @@
+version: "3"
+
+services:
+  backend:
+    build: ./backend
+    container_name: movies-backend
+    ports:
+      - "5100:5100"
+    depends_on:
+      - postgres
+    networks:
+      - movies-network
+    environment:
+      POSTGRES_URI: postgres://postgres:example@movies-db:5431/batch05
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    networks:
+      - movies-network
+    container_name: movies-frontend
+
+  postgres:
+    image: postgres:15
+    ports:
+      - "5431:5431"
+    networks:
+      - movies-network
+    expose:
+      - "5431"
+    environment:
+      POSTGRES_PASSWORD: example
+    container_name: movies-db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    command: -p 5431
+
+
+networks:
+  movies-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+
+  
+
+
